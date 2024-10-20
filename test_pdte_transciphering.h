@@ -1,0 +1,6 @@
+#ifndef TEST_PDTE_TRANSCIPHERING_H
+#define TEST_PDTE_TRANSCIPHERING_H
+
+void runTests(); // 声明测试函数
+
+#endif // TEST_PDTE_TRANSCIPHERING_H

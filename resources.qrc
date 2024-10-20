@@ -1,0 +1,44 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/start.png</file>
+        <file>icons/home.png</file>
+        <file>icons/ml.png</file>
+        <file>icons/crypto.png</file>
+        <file>icons/github.png</file>
+        <file>icons/share.png</file>
+        <file>icons/upload.png</file>
+        <file>icons/download.png</file>
+        <file>home.png</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/data/breast_11bits/model.json</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/data/electricity_10bits/model.json</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/data/phoneme_10bits/model.json</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/data/spam_11bits/model.json</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.cpp</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/fft.cpp</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/keygen.cpp</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/lwehe.cpp</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/ntruhe.cpp</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/sampler.cpp</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/final/test.cpp</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/homomorphic_filip.cpp</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/node.cpp</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/test_filip.cpp</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/test_homomorphic_filip.cpp</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/test_node.cpp</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/test_pdte_transciphering.cpp</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.cpp</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.h</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/homomorphic_filip.h</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/json.hpp</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/node.h</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.h</file>
+        <file>sortinghat/SortingHat/src/cpp_pdte_transciphering/vectorutils.hpp</file>
+    </qresource>
+</RCC>
