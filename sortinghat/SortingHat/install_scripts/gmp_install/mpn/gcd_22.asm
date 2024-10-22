@@ -1,1 +1,0 @@
-../mpn/x86_64/zen/gcd_22.asm

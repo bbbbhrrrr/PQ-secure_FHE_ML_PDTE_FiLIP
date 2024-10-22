@@ -17,7 +17,7 @@ CXX           = clang++
 DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../../../qt_sh -I. -I../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include -I../../../sortinghat/SortingHat/src/cpp_pdte_transciphering -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-clang
+INCPATH       = -I../../../qt_sh -I. -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-clang
 QMAKE         = /usr/lib/qt5/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -54,26 +54,25 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../../main.cpp \
 		../../ConsoleTextEdit.cpp \
-		../../testdialog.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/fft.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/keygen.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/lwehe.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/ntruhe.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/sampler.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/test.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/homomorphic_filip.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/node.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_filip.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_homomorphic_filip.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_node.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_pdte_transciphering.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.cpp qrc_resources.cpp \
+		../../gold/src/cpp_pdte_transciphering/filip.cpp \
+		../../gold/src/cpp_pdte_transciphering/final/src/fft.cpp \
+		../../gold/src/cpp_pdte_transciphering/final/src/keygen.cpp \
+		../../gold/src/cpp_pdte_transciphering/final/src/lwehe.cpp \
+		../../gold/src/cpp_pdte_transciphering/final/src/ntruhe.cpp \
+		../../gold/src/cpp_pdte_transciphering/final/src/sampler.cpp \
+		../../gold/src/cpp_pdte_transciphering/final/test.cpp \
+		../../gold/src/cpp_pdte_transciphering/homomorphic_filip.cpp \
+		../../gold/src/cpp_pdte_transciphering/node.cpp \
+		../../gold/src/cpp_pdte_transciphering/test_filip.cpp \
+		../../gold/src/cpp_pdte_transciphering/test_homomorphic_filip.cpp \
+		../../gold/src/cpp_pdte_transciphering/test_node.cpp \
+		../../gold/src/cpp_pdte_transciphering/test_pdte_transciphering.cpp \
+		../../gold/src/cpp_pdte_transciphering/utils.cpp \
+		../../testdialog.cpp qrc_resources.cpp \
 		moc_ConsoleTextEdit.cpp \
 		moc_testdialog.cpp
 OBJECTS       = main.o \
 		ConsoleTextEdit.o \
-		testdialog.o \
 		filip.o \
 		fft.o \
 		keygen.o \
@@ -88,26 +87,31 @@ OBJECTS       = main.o \
 		test_node.o \
 		test_pdte_transciphering.o \
 		utils.o \
+		testdialog.o \
 		qrc_resources.o \
 		moc_ConsoleTextEdit.o \
 		moc_testdialog.o
-DIST          = ../../../Downloads/8666686_github_icon.png \
-		../../../Downloads/8666691_home_icon.png \
-		../../../Downloads/8666696_share_2_icon.png \
-		../../../Downloads/8666697_shield_icon.png \
-		../../../Downloads/8666719_share_icon.png \
-		../../../Downloads/8666778_download_down_save_icon.png \
-		../../../Downloads/crypto.png \
-		../../../Downloads/download.png \
-		../../../Downloads/github.png \
-		../../../Downloads/home.png \
-		../../../Downloads/ml.png \
-		../../../Downloads/share.png \
-		../../../Downloads/upload.png \
-		../../../home.png \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/Makefile \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/data/electricity_10bits/model.json \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/Makefile \
+DIST          = ../../gold/src/cpp_pdte_transciphering/Makefile \
+		../../gold/src/cpp_pdte_transciphering/data/breast_11bits/model.json \
+		../../gold/src/cpp_pdte_transciphering/data/electricity_10bits/model.json \
+		../../gold/src/cpp_pdte_transciphering/data/phoneme_10bits/model.json \
+		../../gold/src/cpp_pdte_transciphering/data/spam_11bits/model.json \
+		../../gold/src/cpp_pdte_transciphering/filip.o \
+		../../gold/src/cpp_pdte_transciphering/final/Makefile \
+		../../gold/src/cpp_pdte_transciphering/final/fft.o \
+		../../gold/src/cpp_pdte_transciphering/final/keygen.o \
+		../../gold/src/cpp_pdte_transciphering/final/libfinal.a \
+		../../gold/src/cpp_pdte_transciphering/final/lwehe.o \
+		../../gold/src/cpp_pdte_transciphering/final/ntruhe.o \
+		../../gold/src/cpp_pdte_transciphering/final/sampler.o \
+		../../gold/src/cpp_pdte_transciphering/final/test \
+		../../gold/src/cpp_pdte_transciphering/homomorphic_filip.o \
+		../../gold/src/cpp_pdte_transciphering/node.o \
+		../../gold/src/cpp_pdte_transciphering/test_filip \
+		../../gold/src/cpp_pdte_transciphering/test_homomorphic_filip \
+		../../gold/src/cpp_pdte_transciphering/test_node \
+		../../gold/src/cpp_pdte_transciphering/test_pdte_transciphering \
+		../../gold/src/cpp_pdte_transciphering/utils.o \
 		../../home.png \
 		../../icons/crypto.png \
 		../../icons/download.png \
@@ -197,36 +201,36 @@ DIST          = ../../../Downloads/8666686_github_icon.png \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../../../../qt_sh.pro ../../ConsoleTextEdit.h \
-		../../testdialog.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/homomorphic_filip.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/json.hpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/node.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/vectorutils.hpp ../../main.cpp \
+		../../gold/src/cpp_pdte_transciphering/filip.h \
+		../../gold/src/cpp_pdte_transciphering/final/FINAL.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/homomorphic_filip.h \
+		../../gold/src/cpp_pdte_transciphering/json.hpp \
+		../../gold/src/cpp_pdte_transciphering/node.h \
+		../../gold/src/cpp_pdte_transciphering/utils.h \
+		../../gold/src/cpp_pdte_transciphering/vectorutils.hpp \
+		../../testdialog.h ../../main.cpp \
 		../../ConsoleTextEdit.cpp \
-		../../testdialog.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/fft.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/keygen.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/lwehe.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/ntruhe.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/sampler.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/test.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/homomorphic_filip.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/node.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_filip.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_homomorphic_filip.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_node.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_pdte_transciphering.cpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.cpp
+		../../gold/src/cpp_pdte_transciphering/filip.cpp \
+		../../gold/src/cpp_pdte_transciphering/final/src/fft.cpp \
+		../../gold/src/cpp_pdte_transciphering/final/src/keygen.cpp \
+		../../gold/src/cpp_pdte_transciphering/final/src/lwehe.cpp \
+		../../gold/src/cpp_pdte_transciphering/final/src/ntruhe.cpp \
+		../../gold/src/cpp_pdte_transciphering/final/src/sampler.cpp \
+		../../gold/src/cpp_pdte_transciphering/final/test.cpp \
+		../../gold/src/cpp_pdte_transciphering/homomorphic_filip.cpp \
+		../../gold/src/cpp_pdte_transciphering/node.cpp \
+		../../gold/src/cpp_pdte_transciphering/test_filip.cpp \
+		../../gold/src/cpp_pdte_transciphering/test_homomorphic_filip.cpp \
+		../../gold/src/cpp_pdte_transciphering/test_node.cpp \
+		../../gold/src/cpp_pdte_transciphering/test_pdte_transciphering.cpp \
+		../../gold/src/cpp_pdte_transciphering/utils.cpp \
+		../../testdialog.cpp
 QMAKE_TARGET  = qt_sh
 DESTDIR       = 
 TARGET        = qt_sh
@@ -413,8 +417,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../ConsoleTextEdit.h ../../testdialog.h ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.h ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/homomorphic_filip.h ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/json.hpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/node.h ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.h ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/vectorutils.hpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../main.cpp ../../ConsoleTextEdit.cpp ../../testdialog.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/fft.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/keygen.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/lwehe.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/ntruhe.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/sampler.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/test.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/homomorphic_filip.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/node.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_filip.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_homomorphic_filip.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_node.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_pdte_transciphering.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../ConsoleTextEdit.h ../../gold/src/cpp_pdte_transciphering/filip.h ../../gold/src/cpp_pdte_transciphering/final/FINAL.h ../../gold/src/cpp_pdte_transciphering/final/include/fft.h ../../gold/src/cpp_pdte_transciphering/final/include/keygen.h ../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h ../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h ../../gold/src/cpp_pdte_transciphering/final/include/params.h ../../gold/src/cpp_pdte_transciphering/final/include/sampler.h ../../gold/src/cpp_pdte_transciphering/homomorphic_filip.h ../../gold/src/cpp_pdte_transciphering/json.hpp ../../gold/src/cpp_pdte_transciphering/node.h ../../gold/src/cpp_pdte_transciphering/utils.h ../../gold/src/cpp_pdte_transciphering/vectorutils.hpp ../../testdialog.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../main.cpp ../../ConsoleTextEdit.cpp ../../gold/src/cpp_pdte_transciphering/filip.cpp ../../gold/src/cpp_pdte_transciphering/final/src/fft.cpp ../../gold/src/cpp_pdte_transciphering/final/src/keygen.cpp ../../gold/src/cpp_pdte_transciphering/final/src/lwehe.cpp ../../gold/src/cpp_pdte_transciphering/final/src/ntruhe.cpp ../../gold/src/cpp_pdte_transciphering/final/src/sampler.cpp ../../gold/src/cpp_pdte_transciphering/final/test.cpp ../../gold/src/cpp_pdte_transciphering/homomorphic_filip.cpp ../../gold/src/cpp_pdte_transciphering/node.cpp ../../gold/src/cpp_pdte_transciphering/test_filip.cpp ../../gold/src/cpp_pdte_transciphering/test_homomorphic_filip.cpp ../../gold/src/cpp_pdte_transciphering/test_node.cpp ../../gold/src/cpp_pdte_transciphering/test_pdte_transciphering.cpp ../../gold/src/cpp_pdte_transciphering/utils.cpp ../../testdialog.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../../testdialog.ui $(DISTDIR)/
 
 
@@ -445,37 +449,6 @@ compiler_rcc_clean:
 qrc_resources.cpp: ../../resources.qrc \
 		/usr/lib/qt5/bin/rcc \
 		../../home.png \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/homomorphic_filip.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/node.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_homomorphic_filip.cpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/homomorphic_filip.cpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.cpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_pdte_transciphering.cpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_node.cpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/vectorutils.hpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/json.hpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_filip.cpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.cpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/node.cpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/data/breast_11bits/model.json \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/data/phoneme_10bits/model.json \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/data/spam_11bits/model.json \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/data/electricity_10bits/model.json \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/test.cpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/keygen.cpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/sampler.cpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/fft.cpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/ntruhe.cpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/lwehe.cpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
 		../../icons/download.png \
 		../../icons/home.png \
 		../../icons/upload.png \
@@ -484,126 +457,137 @@ qrc_resources.cpp: ../../resources.qrc \
 		../../icons/start.png \
 		../../icons/github.png \
 		../../icons/crypto.png \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/json.hpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/homomorphic_filip.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/homomorphic_filip.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/node.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/json.hpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/homomorphic_filip.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/node.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/json.hpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/node.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/json.hpp \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h
+		../../gold/src/cpp_pdte_transciphering/filip.h \
+		../../gold/src/cpp_pdte_transciphering/homomorphic_filip.h \
+		../../gold/src/cpp_pdte_transciphering/node.h \
+		../../gold/src/cpp_pdte_transciphering/test_homomorphic_filip.cpp \
+		../../gold/src/cpp_pdte_transciphering/homomorphic_filip.cpp \
+		../../gold/src/cpp_pdte_transciphering/utils.cpp \
+		../../gold/src/cpp_pdte_transciphering/utils.h \
+		../../gold/src/cpp_pdte_transciphering/test_pdte_transciphering.cpp \
+		../../gold/src/cpp_pdte_transciphering/test_node.cpp \
+		../../gold/src/cpp_pdte_transciphering/vectorutils.hpp \
+		../../gold/src/cpp_pdte_transciphering/json.hpp \
+		../../gold/src/cpp_pdte_transciphering/test_filip.cpp \
+		../../gold/src/cpp_pdte_transciphering/filip.cpp \
+		../../gold/src/cpp_pdte_transciphering/node.cpp \
+		../../gold/src/cpp_pdte_transciphering/data/breast_11bits/model.json \
+		../../gold/src/cpp_pdte_transciphering/data/phoneme_10bits/model.json \
+		../../gold/src/cpp_pdte_transciphering/data/spam_11bits/model.json \
+		../../gold/src/cpp_pdte_transciphering/data/electricity_10bits/model.json \
+		../../gold/src/cpp_pdte_transciphering/final/FINAL.h \
+		../../gold/src/cpp_pdte_transciphering/final/test.cpp \
+		../../gold/src/cpp_pdte_transciphering/final/src/keygen.cpp \
+		../../gold/src/cpp_pdte_transciphering/final/src/sampler.cpp \
+		../../gold/src/cpp_pdte_transciphering/final/src/fft.cpp \
+		../../gold/src/cpp_pdte_transciphering/final/src/ntruhe.cpp \
+		../../gold/src/cpp_pdte_transciphering/final/src/lwehe.cpp \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/filip.h \
+		../../gold/src/cpp_pdte_transciphering/final/FINAL.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h \
+		../../gold/src/cpp_pdte_transciphering/json.hpp \
+		../../gold/src/cpp_pdte_transciphering/final/FINAL.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h \
+		../../gold/src/cpp_pdte_transciphering/filip.h \
+		../../gold/src/cpp_pdte_transciphering/utils.h \
+		../../gold/src/cpp_pdte_transciphering/homomorphic_filip.h \
+		../../gold/src/cpp_pdte_transciphering/final/FINAL.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h \
+		../../gold/src/cpp_pdte_transciphering/filip.h \
+		../../gold/src/cpp_pdte_transciphering/utils.h \
+		../../gold/src/cpp_pdte_transciphering/homomorphic_filip.h \
+		../../gold/src/cpp_pdte_transciphering/final/FINAL.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h \
+		../../gold/src/cpp_pdte_transciphering/utils.h \
+		../../gold/src/cpp_pdte_transciphering/final/FINAL.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h \
+		../../gold/src/cpp_pdte_transciphering/node.h \
+		../../gold/src/cpp_pdte_transciphering/json.hpp \
+		../../gold/src/cpp_pdte_transciphering/utils.h \
+		../../gold/src/cpp_pdte_transciphering/filip.h \
+		../../gold/src/cpp_pdte_transciphering/homomorphic_filip.h \
+		../../gold/src/cpp_pdte_transciphering/node.h \
+		../../gold/src/cpp_pdte_transciphering/json.hpp \
+		../../gold/src/cpp_pdte_transciphering/final/FINAL.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h \
+		../../gold/src/cpp_pdte_transciphering/filip.h \
+		../../gold/src/cpp_pdte_transciphering/filip.h \
+		../../gold/src/cpp_pdte_transciphering/utils.h \
+		../../gold/src/cpp_pdte_transciphering/final/FINAL.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h \
+		../../gold/src/cpp_pdte_transciphering/node.h \
+		../../gold/src/cpp_pdte_transciphering/json.hpp \
+		../../gold/src/cpp_pdte_transciphering/final/FINAL.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h \
+		../../gold/src/cpp_pdte_transciphering/final/FINAL.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h
 	/usr/lib/qt5/bin/rcc -name resources ../../resources.qrc -o qrc_resources.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -618,13 +602,13 @@ compiler_moc_header_clean:
 moc_ConsoleTextEdit.cpp: ../../ConsoleTextEdit.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/bbbbhrrrr/qt_sh/build/unknown-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-clang -I/home/bbbbhrrrr/qt_sh -I/home/bbbbhrrrr/sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include -I/home/bbbbhrrrr/sortinghat/SortingHat/src/cpp_pdte_transciphering -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/llvm-18/lib/clang/18/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../../ConsoleTextEdit.h -o moc_ConsoleTextEdit.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/bbbbhrrrr/qt_sh/build/unknown-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-clang -I/home/bbbbhrrrr/qt_sh -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/llvm-18/lib/clang/18/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../../ConsoleTextEdit.h -o moc_ConsoleTextEdit.cpp
 
 moc_testdialog.cpp: ../../testdialog.h \
 		../../ConsoleTextEdit.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/bbbbhrrrr/qt_sh/build/unknown-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-clang -I/home/bbbbhrrrr/qt_sh -I/home/bbbbhrrrr/sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include -I/home/bbbbhrrrr/sortinghat/SortingHat/src/cpp_pdte_transciphering -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/llvm-18/lib/clang/18/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../../testdialog.h -o moc_testdialog.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/bbbbhrrrr/qt_sh/build/unknown-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-clang -I/home/bbbbhrrrr/qt_sh -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/llvm-18/lib/clang/18/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../../testdialog.h -o moc_testdialog.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -654,137 +638,110 @@ main.o: ../../main.cpp ../../testdialog.h \
 ConsoleTextEdit.o: ../../ConsoleTextEdit.cpp ../../ConsoleTextEdit.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ConsoleTextEdit.o ../../ConsoleTextEdit.cpp
 
+filip.o: ../../gold/src/cpp_pdte_transciphering/filip.cpp ../../gold/src/cpp_pdte_transciphering/filip.h \
+		../../gold/src/cpp_pdte_transciphering/utils.h \
+		../../gold/src/cpp_pdte_transciphering/final/FINAL.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o filip.o ../../gold/src/cpp_pdte_transciphering/filip.cpp
+
+fft.o: ../../gold/src/cpp_pdte_transciphering/final/src/fft.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fft.o ../../gold/src/cpp_pdte_transciphering/final/src/fft.cpp
+
+keygen.o: ../../gold/src/cpp_pdte_transciphering/final/src/keygen.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o keygen.o ../../gold/src/cpp_pdte_transciphering/final/src/keygen.cpp
+
+lwehe.o: ../../gold/src/cpp_pdte_transciphering/final/src/lwehe.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o lwehe.o ../../gold/src/cpp_pdte_transciphering/final/src/lwehe.cpp
+
+ntruhe.o: ../../gold/src/cpp_pdte_transciphering/final/src/ntruhe.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ntruhe.o ../../gold/src/cpp_pdte_transciphering/final/src/ntruhe.cpp
+
+sampler.o: ../../gold/src/cpp_pdte_transciphering/final/src/sampler.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sampler.o ../../gold/src/cpp_pdte_transciphering/final/src/sampler.cpp
+
+test.o: ../../gold/src/cpp_pdte_transciphering/final/test.cpp ../../gold/src/cpp_pdte_transciphering/final/FINAL.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o test.o ../../gold/src/cpp_pdte_transciphering/final/test.cpp
+
+homomorphic_filip.o: ../../gold/src/cpp_pdte_transciphering/homomorphic_filip.cpp ../../gold/src/cpp_pdte_transciphering/filip.h \
+		../../gold/src/cpp_pdte_transciphering/utils.h \
+		../../gold/src/cpp_pdte_transciphering/homomorphic_filip.h \
+		../../gold/src/cpp_pdte_transciphering/final/FINAL.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o homomorphic_filip.o ../../gold/src/cpp_pdte_transciphering/homomorphic_filip.cpp
+
+node.o: ../../gold/src/cpp_pdte_transciphering/node.cpp ../../gold/src/cpp_pdte_transciphering/node.h \
+		../../gold/src/cpp_pdte_transciphering/json.hpp \
+		../../gold/src/cpp_pdte_transciphering/final/FINAL.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o node.o ../../gold/src/cpp_pdte_transciphering/node.cpp
+
+test_filip.o: ../../gold/src/cpp_pdte_transciphering/test_filip.cpp ../../gold/src/cpp_pdte_transciphering/filip.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o test_filip.o ../../gold/src/cpp_pdte_transciphering/test_filip.cpp
+
+test_homomorphic_filip.o: ../../gold/src/cpp_pdte_transciphering/test_homomorphic_filip.cpp ../../gold/src/cpp_pdte_transciphering/filip.h \
+		../../gold/src/cpp_pdte_transciphering/utils.h \
+		../../gold/src/cpp_pdte_transciphering/homomorphic_filip.h \
+		../../gold/src/cpp_pdte_transciphering/final/FINAL.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o test_homomorphic_filip.o ../../gold/src/cpp_pdte_transciphering/test_homomorphic_filip.cpp
+
+test_node.o: ../../gold/src/cpp_pdte_transciphering/test_node.cpp ../../gold/src/cpp_pdte_transciphering/node.h \
+		../../gold/src/cpp_pdte_transciphering/json.hpp \
+		../../gold/src/cpp_pdte_transciphering/final/FINAL.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o test_node.o ../../gold/src/cpp_pdte_transciphering/test_node.cpp
+
+test_pdte_transciphering.o: ../../gold/src/cpp_pdte_transciphering/test_pdte_transciphering.cpp ../../gold/src/cpp_pdte_transciphering/final/FINAL.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/params.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/sampler.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/keygen.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/fft.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/ntruhe.h \
+		../../gold/src/cpp_pdte_transciphering/final/include/lwehe.h \
+		../../gold/src/cpp_pdte_transciphering/node.h \
+		../../gold/src/cpp_pdte_transciphering/json.hpp \
+		../../gold/src/cpp_pdte_transciphering/utils.h \
+		../../gold/src/cpp_pdte_transciphering/filip.h \
+		../../gold/src/cpp_pdte_transciphering/homomorphic_filip.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o test_pdte_transciphering.o ../../gold/src/cpp_pdte_transciphering/test_pdte_transciphering.cpp
+
+utils.o: ../../gold/src/cpp_pdte_transciphering/utils.cpp ../../gold/src/cpp_pdte_transciphering/utils.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o utils.o ../../gold/src/cpp_pdte_transciphering/utils.cpp
+
 testdialog.o: ../../testdialog.cpp ../../testdialog.h \
-		../../ConsoleTextEdit.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/node.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/json.hpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/homomorphic_filip.h
+		../../ConsoleTextEdit.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o testdialog.o ../../testdialog.cpp
-
-filip.o: ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o filip.o ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.cpp
-
-fft.o: ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/fft.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fft.o ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/fft.cpp
-
-keygen.o: ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/keygen.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o keygen.o ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/keygen.cpp
-
-lwehe.o: ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/lwehe.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o lwehe.o ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/lwehe.cpp
-
-ntruhe.o: ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/ntruhe.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ntruhe.o ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/ntruhe.cpp
-
-sampler.o: ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/sampler.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sampler.o ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/src/sampler.cpp
-
-test.o: ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/test.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o test.o ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/test.cpp
-
-homomorphic_filip.o: ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/homomorphic_filip.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/homomorphic_filip.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o homomorphic_filip.o ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/homomorphic_filip.cpp
-
-node.o: ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/node.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/node.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/json.hpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o node.o ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/node.cpp
-
-test_filip.o: ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_filip.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o test_filip.o ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_filip.cpp
-
-test_homomorphic_filip.o: ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_homomorphic_filip.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/homomorphic_filip.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o test_homomorphic_filip.o ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_homomorphic_filip.cpp
-
-test_node.o: ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_node.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/node.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/json.hpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o test_node.o ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_node.cpp
-
-test_pdte_transciphering.o: ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_pdte_transciphering.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/FINAL.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/params.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/sampler.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/keygen.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/fft.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/ntruhe.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/final/include/lwehe.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/node.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/json.hpp \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/filip.h \
-		../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/homomorphic_filip.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o test_pdte_transciphering.o ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/test_pdte_transciphering.cpp
-
-utils.o: ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.cpp ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o utils.o ../../../sortinghat/SortingHat/src/cpp_pdte_transciphering/utils.cpp
 
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp

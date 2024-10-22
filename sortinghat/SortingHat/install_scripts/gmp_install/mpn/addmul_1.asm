@@ -1,1 +1,0 @@
-../mpn/x86_64/zen/aorsmul_1.asm
