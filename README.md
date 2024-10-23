@@ -37,6 +37,59 @@ CUDA 对 FFT 进行加速，使得自举过程比原方案提升了约 50%，密
 
 可视化客户端搭建：
 - Qtcreator 6.0 以上
+## 部署
+### 安装环境依赖
+该项目基于FINAL实现，已包含其代码。
+但仍需安装FINAL的依赖项：NTL\GNU GMP\FFTW
+
+安装FFTW
+
+```bash
+sudo apt update
+sudo apt install libfftw3-dev
+```
+
+安装GNU GMP
+
+```bash
+sudo apt update
+sudo apt install libgmp-dev
+```
+
+安装NTL
+```bash
+sudo apt install libntl-dev
+```
+### 获取源码
+```bash
+git clone https://github.com/bbbbhrrrr/PQ-secure_FHE_ML_PDTE_FiLIP.git
+```
+### 项目结构
+├── build 构建Qt可视化界面
+
+├── gold PDTE+FiLIP
+
+├── icons Qt可视化界面资源
+
+├── style Qt可视化界面资源
+
+├── other Qt可视化界面资源
+
+├── assets 仓库资源文件
+
+## 运行
+编译源码运行只需在gold/src/cpp_pdte_transciphering运行make即可。可在源码中改写对应 test_ 文件测试各项功能。
+
+使用Qt打开该项目进行build即可生成可视化界面。
+
+*注：
+- 根据需要修改模型等相关文件路径。
+- gold/src/cpp_pdte_transciphering/data提供各模型测试数据。
+- testdialog.h/testdialog.cpp等文件为Qt可视化界面相关文件。
+
+## 效果预览
+
+
 
 
 
