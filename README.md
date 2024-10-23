@@ -88,6 +88,15 @@ git clone https://github.com/bbbbhrrrr/PQ-secure_FHE_ML_PDTE_FiLIP.git
 - testdialog.h/testdialog.cpp等文件为Qt可视化界面相关文件。
 
 ## 效果预览
+- 主界面
+![主界面](assets/main.png)
+
+- ML_PDTE
+![ML](assets/ml.png)
+
+- FiLIP
+![FILIP](assets/filip.png)
+
 
 
 
