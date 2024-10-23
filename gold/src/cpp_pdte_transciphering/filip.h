@@ -1,7 +1,7 @@
 /**
- *  Implements the FiLIP stream cipher with f = XOR-THR, as described
- * in the paper 'Transciphering, using FiLIP and TFHE for an efficient
- * delegation of computation' (https://eprint.iacr.org/2020/1373.pdf).
+ *  实现了 FiLIP 流密码，使用 f = XOR-THR，如论文
+ * 'Transciphering, using FiLIP and TFHE for an efficient
+ * delegation of computation' (https://eprint.iacr.org/2020/1373.pdf) 中所述。
  */
 
 #ifndef __FiLIP_XOT_THR__
@@ -14,18 +14,18 @@ class FiLIP
 {
     public:
 
-        int len_sk; // number of bits of secret key
-        std::vector<int> sk; // secret key
+        int len_sk; // 密钥的位数
+        std::vector<int> sk; // 密钥
 
-        int size_subset; // number of bits of sk used to encrypt each bit
+        int size_subset; // 用于加密每个位的密钥位数
 
-        int size_domain_thr; // number of bits added in the threshold function
-        int threshold_limit; // added bits are compared to this limit
+        int size_domain_thr; // 阈值函数中添加的位数
+        int threshold_limit; // 添加的位数与此限制进行比较
 
-        int num_bits_xored; // number of bits that are xored with the threshold.
-                            // We have: size_subset = size_domain_thr + num_bits_xored
+        int num_bits_xored; // 与阈值进行异或的位数。
+                            // 我们有：size_subset = size_domain_thr + num_bits_xored
 
-        std::vector<int> whitening; // random bits used to mask permuted subset
+        std::vector<int> whitening; // 用于掩码置乱子集的随机位
 
 
         std::default_random_engine rand_engine;
@@ -35,32 +35,32 @@ class FiLIP
         FiLIP(int len_sk, int size_subset, int size_domain_thr, int threshold_limit);
 
         /** 
-         *  Permutes the secret key, then takes a subset of it and XOR with the
-         * whitening vector. Returns the result in a vector of length size_subset.
+         *  置乱密钥，然后取其子集并与掩码向量进行异或。
+         * 返回长度为 size_subset 的结果向量。
          */
         std::vector<int> subset_permut_whiten();
 
 
         /**
-         *  Uses the initialization vector iv to encrypt each entry of msg, 
-         * which is supposed to be a binary vector.
+         *  使用初始化向量 iv 加密 msg 的每个条目，
+         *  msg 应该是一个二进制向量。
          */
         std::vector<int> enc(long int iv, std::vector<int> msg);
 
 
         /**
-         *  Uses the initialization vector iv to decrypt each entry of c, 
-         * which is supposed to be a binary vector.
+         *  使用初始化向量 iv 解密 c 的每个条目，
+         *  c 应该是一个二进制向量。
          */
         std::vector<int> dec(long int iv, std::vector<int> c);
 
 
         /**
-         *  Auxiliar function used to encrypt and decrypt. 
-         *  It receives a permutation of a subset of the secret key,
-         * denoted by x_1, x_2, ..., x_(n-k), y_1, ..., y_k, and outputs
+         *  用于加密和解密的辅助函数。
+         *  它接收密钥子集的置乱，
+         * 表示为 x_1, x_2, ..., x_(n-k), y_1, ..., y_k，并输出
          *      x_1 XOR ... XOR x_(n-k) XOR THR(y_1, ..., y_k)
-         * where THR(y_1, ..., y_k) is 0 if sum y_i < threshold_limit and 1 otherwise.
+         * 其中 THR(y_1, ..., y_k) 如果 sum y_i < threshold_limit 则为 0，否则为 1。
          */
         int compute_xor_thr(std::vector<int> perm_subset_sk);
 

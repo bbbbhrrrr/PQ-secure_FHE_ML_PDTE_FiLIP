@@ -1,10 +1,9 @@
 /*********************************************************************************
-*   Implementation of PDTE plus transciphering using the FINAL library.
-*   All the trees are stored as JSON files in the directory named data.
+*   使用 FINAL 库实现 PDTE 加转密。
+*   所有树都存储为名为 data 的目录中的 JSON 文件。
 *   
-*   First, we run the homomorphic comparisons (using our recursive grouped comparison
-* algorithm) to compute the encrypted control bit of each internal node of the
-* tree. Then, we run our tree traversal using FINAL::AND gates.
+*   首先，我们运行同态比较（使用我们的递归分组比较算法）来计算树的每个内部节点的加密控制位。
+*   然后，我们使用 FINAL::AND 门运行树遍历。
 ********************************************************************************/
 
 
@@ -30,8 +29,8 @@ using namespace std;
 // 	}
 // }
 
-// Receives a ciphertext c encrypting m.
-// Returns a ciphertext encrypting the result of the comparison m > v
+// 接收加密文本 c 加密 m。
+// 返回加密文本，加密比较结果 m > v
 Ctxt_LWE greater_than(const SchemeLWE& fhe, const vector<Ctxt_LWE>& c, const vector<int>& v)
 {
     int num_bits = c.size();
@@ -70,7 +69,7 @@ Ctxt_LWE less_or_equal(const SchemeLWE& fhe, const vector<Ctxt_LWE>& c, const ve
     return res;
 }
 
-// Assumes that both a and b are bits
+// 假设 a 和 b 都是比特
 const Ctxt_LWE& xnor(const Ctxt_LWE& a, const Ctxt_LWE& not_a, int b){
     if (b)
         return a;
@@ -83,11 +82,11 @@ std::map<int, Ctxt_LWE> R1;
 std::map<int, Ctxt_LWE> X1;
 
 /**
- * Compare the integer m with all the integers v[0], v[1], ... 
- * Assume that all integers are between 0 and 2^nbits - 1, where nbits = bits_m.size().
- * The result is stored in R1, i.e., after calling this function, 
- * R1[v[i]] stores (m > v[i]).
- * Returns the number of homomorphic gates used in the evaluation.
+ * 比较整数 m 与所有整数 v[0], v[1], ...
+ * 假设所有整数都在 0 到 2^nbits - 1 之间，其中 nbits = bits_m.size()。
+ * 结果存储在 R1 中，即调用此函数后，
+ * R1[v[i]] 存储 (m > v[i]) 的结果。
+ * 返回评估中使用的同态门的数量。
 */
 int grouped_comp(const SchemeLWE& fhe, const vector<Ctxt_LWE>& bits_m, const vector<int>& v)
 {
@@ -109,37 +108,38 @@ int grouped_comp(const SchemeLWE& fhe, const vector<Ctxt_LWE>& bits_m, const vec
         };
 
 
-    int num_and_gates = 0;
-    int k = nbits-2;
-    while (k >= 0){
-        std::map<int, Ctxt_LWE> R;
-        std::map<int, Ctxt_LWE> X;
-        for(int i = 0; i < v.size(); i++){
-            int vk = v[i] >> k; // nbits-k most significant bits of v[i]
-            int vk1 = v[i] >> (k+1); // nbits-k+1 most significant bits of v[i]
-            int kth_bit = vk % 2; // k-th bit of v[i]
-            if (0 == X.count(vk)){
-                fhe.and_gate(X[vk], xnor(bits_m[k], bits_not_m[k], kth_bit), X1[vk1]); // X[vk] = XNOR() * X1[vk1]
-                // now compute R[vk] = R1[vk1] + X1[vk1] * (1-kth_bit) * bits_m[k] 
-                if (kth_bit){
-                    R[vk] = R1[vk1];
-                    num_and_gates += 1;
-                }else{
-                    fhe.and_gate(tmp, X1[vk1], bits_m[k]);
-                    R[vk] = tmp + R1[vk1];
-                    num_and_gates += 2;
-                }
+int num_and_gates = 0;
+int k = nbits-2;
+while (k >= 0){
+    std::map<int, Ctxt_LWE> R;
+    std::map<int, Ctxt_LWE> X;
+    for(int i = 0; i < v.size(); i++){
+        int vk = v[i] >> k; // v[i] 的 nbits-k 个最高有效位
+        int vk1 = v[i] >> (k+1); // v[i] 的 nbits-k+1 个最高有效位
+        int kth_bit = vk % 2; // v[i] 的第 k 位
+        if (0 == X.count(vk)){
+            fhe.and_gate(X[vk], xnor(bits_m[k], bits_not_m[k], kth_bit), X1[vk1]); // X[vk] = XNOR() * X1[vk1]
+            // 现在计算 R[vk] = R1[vk1] + X1[vk1] * (1-kth_bit) * bits_m[k] 
+            if (kth_bit){
+                R[vk] = R1[vk1];
+                num_and_gates += 1;
+            }else{
+                fhe.and_gate(tmp, X1[vk1], bits_m[k]);
+                R[vk] = tmp + R1[vk1];
+                num_and_gates += 2;
             }
         }
-        X1 = X;
-        R1 = R;
-        k -= 1;
     }
-    return num_and_gates;
+    X1 = X;
+    R1 = R;
+    k -= 1;
+}
+return num_and_gates;
 }
 
 
 int BOUND_RECURSION = 4;
+
 
 int rec_split_grouped_comp(const SchemeLWE& fhe, const vector<Ctxt_LWE>& bits_m, const vector<int>& v, bool compX = true)
 {
@@ -150,7 +150,7 @@ int rec_split_grouped_comp(const SchemeLWE& fhe, const vector<Ctxt_LWE>& bits_m,
     
     int k = floor(nbits / 2);
     int two_to_k = 1 << k;
-    // XXX TODO use pointers to avoid copying ciphertexts many times
+    // XXX TODO 使用指针以避免多次复制密文
     vector<Ctxt_LWE> lsb_m(k);
     vector<Ctxt_LWE> msb_m(nbits - k);
     for(int i = 0; i < k; i++)
@@ -185,16 +185,15 @@ int rec_split_grouped_comp(const SchemeLWE& fhe, const vector<Ctxt_LWE>& bits_m,
         int vi = v[i];
         int msb_vi = msb_v[i];
         int lsb_vi = lsb_v[i];
-        // R[vi] = (msbR[ msb_vi ]) OR (msbX[ msb_vi ] and lsbR[ lsb_vi ])
-        // but we can actually add instead of using OR gate because only one
-        // of the clauses can be true
+        // R[vi] = (msbR[ msb_vi ]) OR (msbX[ msb_vi ] 和 lsbR[ lsb_vi ])
+        // 但我们实际上可以使用加法代替 OR 门，因为只有一个子句可以为真
         if (0 == X.count(vi)){
-            // R[vi] = msbR[ msb_vi ] + msbX[ msb_vi ] and lsbR[ lsb_vi ]
+            // R[vi] = msbR[ msb_vi ] + msbX[ msb_vi ] 和 lsbR[ lsb_vi ]
             fhe.and_gate(tmp, msbX[ msb_vi ], lsbR[ lsb_vi ]);
             R[vi] = msbR[ msb_vi ] + tmp;
             num_ands_X += 1;
             if(compX){
-                //X[vi] = msbX[ msb_vi ] and lsbX[ lsb_vi ]
+                //X[vi] = msbX[ msb_vi ] 和 lsbX[ lsb_vi ]
                 fhe.and_gate(X[vi], msbX[ msb_vi ], lsbX[ lsb_vi ]);
                 num_ands_X += 1;
             }
@@ -235,9 +234,9 @@ void print_R1(){
 }
 
 void test_comparisons() {
-    int num_bits = 10; // bit length of the values that will be compared
-    int upper_bound = 1 << num_bits; // maximum value
-    int n = 50;    // number of plaintexts that will be compared to the ciphertext
+    int num_bits = 10; // 将要比较的值的位长度
+    int upper_bound = 1 << num_bits; // 最大值
+    int n = 50;    // 将要与密文进行比较的明文数量
         
     SchemeLWE fhe;
 
@@ -245,10 +244,10 @@ void test_comparisons() {
     double avg_time = 0.0;
     double avg_gates = 0.0;
     for(int _i = 0; _i < N_TESTS; _i++){
-        cout << "# test " << _i << endl;
-        // we want to compare enc(m) with v
+        cout << "# 测试 " << _i << endl;
+        // 我们想要比较 enc(m) 和 v
         int m = rand() % upper_bound;
-        vector<int> bits_m(num_bits); // m[0] is the least significant bit of m
+        vector<int> bits_m(num_bits); // m[0] 是 m 的最低有效位
         bits_m = int_to_bits(m, num_bits);
         vector<Ctxt_LWE> c(num_bits);
         for(int i = 0; i < num_bits; i++){
@@ -260,7 +259,7 @@ void test_comparisons() {
 //        cout << "m = " << m << endl;
 
 
-        vector<int> v(n); // values that will be compared to m
+        vector<int> v(n); // 将要与 m 进行比较的值
         for(int i = 0; i < n; i++){
             v[i] = rand() % upper_bound;
         }
@@ -289,53 +288,38 @@ void test_comparisons() {
 
     }
 
-    cout << "Homomorphic comparison of m with " << n 
-         << " integers of " << num_bits << " bits." << endl;
-    cout << "Avg. time to compare homomorphically: " 
-         << avg_time/N_TESTS << " s" << endl;
-    cout << "Avg. number of homomorphic gates: " << avg_gates / N_TESTS << endl;
+    cout << "同态比较 m 和 " << n 
+         << " 个 " << num_bits << " 位整数。" << endl;
+    cout << "同态比较的平均时间: " 
+         << avg_time/N_TESTS << " 秒" << endl;
+    cout << "同态门的平均数量: " << avg_gates / N_TESTS << endl;
 }
 
-// Assume that the control bit of each internal node is already set
+// 假设每个内部节点的控制位已经设置好
+
 void traverse_rec(unsigned &out, const Node& node, const std::vector<unsigned int> &features, unsigned parent) {
     if (node.is_leaf()) {
         out += node.class_leaf * parent;
         cout << "out = " << out << endl;
-    }else{
+    } else {
         if (node.op == "leq") {
             if (features[node.feature_index] <= node.threshold) {
                 traverse_rec(out, *node.left, features, parent);
-                traverse_rec(out, *node.right, features, parent*(1-parent));
+                traverse_rec(out, *node.right, features, parent * (1 - parent));
             } else {
-                traverse_rec(out, *node.left, features, parent*(1-parent));
+                traverse_rec(out, *node.left, features, parent * (1 - parent));
                 traverse_rec(out, *node.right, features, parent);
             }
         } else {
-            // unimplemented
+            // 未实现
             assert(false);
         }
     }
 }
-        // // right.value = parent * node.control_bit
-        // int right_value = fhe.decrypt(node.right->value);
-        // int left_value = fhe.decrypt(node.left->value);
-        // int parent_value = fhe.decrypt(parent);
-        // int control_bit_value = fhe.decrypt(node.control_bit);
-        // right_value = parent_value * control_bit_value;
-        // fhe.encrypt(node.right->value, right_value);
 
-        // // fhe.and_gate(node.right->value, parent, node.control_bit);
-        // // left.value = parent*(1 - node.control_bit)
-        // left_value = parent_value - right_value;
-        // fhe.encrypt(node.left->value, left_value);
-        // // node.left->value = parent - node.right->value;
-        // traverse_rec(out, *(node.left), fhe);
-        // traverse_rec(out, *(node.right), fhe);
- 
-
-// num_bits is the bit length of the values that will be compared
+// num_bits 是将要比较的值的位长度
 void test_json_tree(string filename, int num_bits, bool verbose) {
-    int upper_bound = 1 << num_bits; // maximum value
+    int upper_bound = 1 << num_bits; // 最大值
     
     SchemeLWE fhe;
 
@@ -354,15 +338,15 @@ void test_json_tree(string filename, int num_bits, bool verbose) {
     int N_TESTS = 3;
     double avg_time = 0.0;
     for(int _i = 0; _i < N_TESTS; _i++){
-        cout << "# test " << _i << endl;
-        // we want to compare enc(m) with v
+        cout << "# 测试 " << _i << endl;
+        // 我们想要比较 enc(m) 和 v
         vector<int> plain_features(num_features);
         vector<vector<int> > bits_m(num_features);
-        vector<vector<Ctxt_LWE> > enc_bits(num_features); // enc_bits[i] == encryption of bits of i-th feature
+        vector<vector<Ctxt_LWE> > enc_bits(num_features); // enc_bits[i] == 第 i 个特征的位的加密
         for(int _j = 0; _j < num_features; _j++){
             plain_features[_j] = rand() % upper_bound;
             cout << "plain_features["<<_j<<"] = " << plain_features[_j] << endl;
-            bits_m[_j] = vector<int>(num_bits); // m[0] is the least significant bit of m
+            bits_m[_j] = vector<int>(num_bits); // m[0] 是 m 的最低有效位
             bits_m[_j] = int_to_bits(plain_features[_j], num_bits);
             vector<Ctxt_LWE> c(num_bits);
             for(int i = 0; i < num_bits; i++){
@@ -371,12 +355,12 @@ void test_json_tree(string filename, int num_bits, bool verbose) {
             enc_bits[_j] = c;
         }
 
-        // Now, compare each feature
+        // 现在，比较每个特征
         for (int i = 0; i < num_features; i++){
             int m = plain_features[i];
             cout << "m = " << m << endl;
             vector<int>& v = thrs_by_feat[i];
-            int n = v.size();    // number of plaintexts that will be compared to the ciphertext
+            int n = v.size();    // 将要与密文进行比较的明文数量
             vector<Ctxt_LWE>& c = enc_bits[i];
 
             if (0 == n)
@@ -388,7 +372,7 @@ void test_json_tree(string filename, int num_bits, bool verbose) {
                 Ctxt_LWE enc_cmp = greater_than(fhe, c, int_to_bits(v[0], num_bits));
                 nodes[0]->control_bit = enc_cmp;
                 run_time = float(clock()-start)/CLOCKS_PER_SEC;
-            }else{
+            } else {
                 int num_and_gates = rec_split_grouped_comp(fhe, c, v);
                 run_time = float(clock()-start)/CLOCKS_PER_SEC;
                 avg_time += run_time;
@@ -400,30 +384,28 @@ void test_json_tree(string filename, int num_bits, bool verbose) {
                     assert(dec_comp == (m > v[j]));
                 }
 
-                // now update the control bits with the result of the comparisons
+                // 现在用比较结果更新控制位
                 vector<Node*>& nodes = nodes_by_feat[i];
                 for(int j = 0; j < n; j++){
                     nodes[j]->control_bit = R1[v[j]];
                 }
             }
 
-            cout << "Homomorphic comparison of feature["<<i<<"] with " << n    
-            << " integers of " << num_bits << " bits." << endl;
-            cout << "run_time = " << run_time << endl;
-
-
+            cout << "同态比较特征["<<i<<"] 和 " << n    
+            << " 个 " << num_bits << " 位整数。" << endl;
+            cout << "运行时间 = " << run_time << endl;
         }
-        // Now that every feature was compared to the corresponding nodes, we traverse the tree
+        // 现在每个特征都与相应的节点进行了比较，我们遍历树
         Ctxt_LWE out;
         auto start = clock();
         // traverse_rec(out, root, fhe, 1, plain_features);
 
         // 解密预测结果
         int prediction = fhe.decrypt(out);
-        cout << "Prediction: " << prediction << endl;
+        cout << "预测结果: " << prediction << endl;
 
         float run_time = float(clock()-start)/CLOCKS_PER_SEC;
-        cout << "Time to traverse homomorphically: " << run_time << endl;
+        cout << "同态遍历时间: " << run_time << endl;
     }
 }
 
