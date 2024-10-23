@@ -45,7 +45,9 @@ FINAL优化版本：
 ### 安装环境依赖
 该项目基于FINAL实现，已包含其代码。
 但仍需安装FINAL的依赖项：NTL\GNU GMP\FFTW
- 由于我们的优化是基于CUDA进行的，因此还需要安装CUDA
+
+由于我们的FINAL优化是基于CUDA进行的，因此还需要安装CUDA环境
+ 
 安装FFTW
 
 ```bash
