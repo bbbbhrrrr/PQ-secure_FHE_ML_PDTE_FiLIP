@@ -37,11 +37,14 @@ CUDA 对 FFT 进行加速，使得自举过程比原方案提升了约 50%，密
 
 可视化客户端搭建：
 - Qtcreator 6.0 以上
+
+优化版本：
+- NVIDIA显卡
 ## 部署
 ### 安装环境依赖
 该项目基于FINAL实现，已包含其代码。
 但仍需安装FINAL的依赖项：NTL\GNU GMP\FFTW
-
+ 由于我们的优化是基于CUDA进行的，因此还需要安装CUDA
 安装FFTW
 
 ```bash
@@ -59,6 +62,23 @@ sudo apt install libgmp-dev
 安装NTL
 ```bash
 sudo apt install libntl-dev
+```
+
+安装nvidia-driver
+```bash
+sudo apt install nvidia-driver-470
+```
+
+安装CUDA
+```bash
+wget https://developer.download.nvidia.com/compute/cuda/11.4.0/local_installers/cuda_11.4.0_470.42.01_linux.run
+sudo sh cuda_11.4.0_470.42.01_linux.run
+# 添加环境变量
+sudo vim ~/.bashrc
+export PATH=/usr/local/cuda-11.4/bin:$PATH
+source ~/.bashrc
+# 验证安装成功
+nvcc --version
 ```
 ### 获取源码
 ```bash
